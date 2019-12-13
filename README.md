@@ -3,7 +3,7 @@ FPS sur unity qui utilise la webcam
 
 Controles : 
 
-ZQSD : déplacements
+ZQSD : déplacements \n
 Souris : regarder autour
 Espace : sauter
 Clic gauche : tirer
