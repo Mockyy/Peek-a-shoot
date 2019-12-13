@@ -6,12 +6,12 @@ using OpenCVForUnity.CoreModule;
 
 public class CameraFPS : MonoBehaviour
 {
-    public FaceDetectionWebCamTextureExample webcam;
-    public Transform[] pos;
+    [SerializeField] private FaceDetectionWebCamTextureExample webcam;
+    [SerializeField] private Transform[] pos;
 
     private Camera cam;
-    public Transform playerBody;
-    public float sensitivity = 100f;
+    [SerializeField] private Transform playerBody;
+    [SerializeField] private float sensitivity = 100f;
     private float xRotation = 0f;
 
     private bool peekUp = false;
@@ -21,6 +21,7 @@ public class CameraFPS : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Veérouillage de la souris et assignation de la position de la caméra
         Cursor.lockState = CursorLockMode.Locked;
         cam = Camera.main;
         cam.transform.position = pos[0].position;
@@ -29,19 +30,22 @@ public class CameraFPS : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //peekFixed();
+        //Permet de déplacer la caméra selon le placement dans la webcam
         peekFixed();
 
+        //Récupération des mouvements de la souris
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
+        //Rotation de la caméra
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
     }
 
+    //Si le face tracking atteint certaines zones de l'écran, on y déplace la caméra
     public void peekFixed()
     {
         if (webcam.rect.y < 100)
@@ -93,6 +97,7 @@ public class CameraFPS : MonoBehaviour
         }
     }
 
+    //Tentative de suivre le face tracking sans passer par des positions pré définies
     public void peekFree()
     {
         Vector3 movement = new Vector2(0f, 0f);

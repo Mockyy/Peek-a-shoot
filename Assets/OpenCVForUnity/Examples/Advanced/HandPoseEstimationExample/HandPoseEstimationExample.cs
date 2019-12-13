@@ -332,22 +332,7 @@ namespace OpenCVForUnityExample
 
             PlayerController lol = player.GetComponent<PlayerController>();
             
-            if(this.numberOfFingers <= 0)
-            {
-                lol.speed = 0;
-            }
-            if(this.numberOfFingers == 1)
-            {
-                lol.speed = 2;
-            }
-            if(this.numberOfFingers == 2)
-            {
-                lol.speed = 5;
-            }
-            if(this.numberOfFingers == 3)
-            {
-                lol.speed = 10;
-            }
+           
 
 //            Debug.Log ("numberOfFingers " + numberOfFingers);
             

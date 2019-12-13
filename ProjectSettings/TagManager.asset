@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fire
   - Enemy
+  - Manager
+  - Start
   layers:
   - Default
   - TransparentFX
