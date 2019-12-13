@@ -1,7 +1,7 @@
 # Peek-a-shoot
 FPS sur unity qui utilise la webcam
 
-#Controles : 
+Controles : 
 
 ZQSD : déplacements
 
